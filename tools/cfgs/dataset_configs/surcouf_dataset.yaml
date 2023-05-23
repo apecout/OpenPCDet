@@ -1,5 +1,5 @@
 DATASET: 'SurcoufDataset'
-DATA_PATH: '../data/surcouf'
+DATA_PATH: '../../data/surcouf'
 
 POINT_CLOUD_RANGE: [-40.0, -80.0, -2, 40.0, 0.0, 20]
 

@@ -1,7 +1,7 @@
 CLASS_NAMES: ['class_0', 'class_1', 'class_4']
 
 DATA_CONFIG: 
-    _BASE_CONFIG_: ../dataset_configs/surcouf_dataset.yaml
+    _BASE_CONFIG_: cfgs/dataset_configs/surcouf_dataset.yaml
     #POINT_CLOUD_RANGE: [0, -39.68, -3, 69.12, 39.68, 1]
     POINT_CLOUD_RANGE: [-40.0, -80.0, -2, 40.0, 0.0, 20]
     DATA_PROCESSOR:

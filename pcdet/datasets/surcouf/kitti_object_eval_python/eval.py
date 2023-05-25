@@ -28,7 +28,7 @@ def get_thresholds(scores: np.ndarray, num_gt, num_sample_pts=41):
 
 
 def clean_data(gt_anno, dt_anno, current_class, difficulty):
-    CLASS_NAMES = ['class_0', 'class_1', 'class_2', 'class_3', 'class_4', 'truck']
+    CLASS_NAMES = ['sailing-yatch', 'motor-boat', 'vessel', 'buoy']
     MIN_HEIGHT = [-1, -1, -1]
     MAX_OCCLUSION = [0, 1, 2]
     MAX_TRUNCATION = [0.15, 0.3, 0.5]
@@ -645,12 +645,10 @@ def get_official_eval_result(gt_annos, dt_annos, current_classes, PR_detail_dict
                             [0.5, 0.25, 0.25, 0.5, 0.25, 0.5]])
     min_overlaps = np.stack([overlap_0_7, overlap_0_5], axis=0)  # [2, 3, 5]
     class_to_name = {
-        0: 'class_0',
-        1: 'class_1',
-        2: 'class_2',
-        3: 'class_3',
-        4: 'class_4',
-        5: 'Truck'
+        0: 'sailing-yatch',
+        1: 'motor-boat',
+        2: 'vessel',
+        3: 'buoy',
     }
     name_to_class = {v: n for n, v in class_to_name.items()}
     if not isinstance(current_classes, (list, tuple)):
@@ -748,11 +746,10 @@ def get_official_eval_result(gt_annos, dt_annos, current_classes, PR_detail_dict
 
 def get_coco_eval_result(gt_annos, dt_annos, current_classes):
     class_to_name = {
-        0: 'class_0',
-        1: 'class_1',
-        2: 'class_4',
-        3: 'Van',
-        4: 'Person_sitting',
+        0: 'sailing-yatch',
+        1: 'motor-boat',
+        2: 'vessel',
+        3: 'buoy',
     }
     class_to_range = {
         0: [0.5, 0.95, 10],

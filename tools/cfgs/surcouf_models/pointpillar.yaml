@@ -1,4 +1,4 @@
-CLASS_NAMES: ['class_0', 'class_1', 'class_4']
+CLASS_NAMES: ['sailing-yatch', 'motor-boat', 'buoy']
 
 DATA_CONFIG: 
     _BASE_CONFIG_: cfgs/dataset_configs/surcouf_dataset.yaml
@@ -29,11 +29,11 @@ DATA_CONFIG:
               DB_INFO_PATH:
                   - surcouf_dbinfos_train.pkl
               PREPARE: {
-                 filter_by_min_points: ['class_0:5', 'class_1:5', 'class_4:5'],
+                 filter_by_min_points: ['sailing-yatch:5', 'motor-boat:5', 'vessel:5', 'buoy:5'],
                  #filter_by_difficulty: [-1],
               }
 
-              SAMPLE_GROUPS: ['class_0:1','class_1:2', 'class_4:3']
+              SAMPLE_GROUPS: ['sailing-yatch:0', 'motor-boat:1', 'vessel:2', 'buoy:3']
               NUM_POINT_FEATURES: 4
               DATABASE_WITH_FAKELIDAR: False
               REMOVE_EXTRA_WIDTH: [0.0, 0.0, 0.0]
@@ -81,7 +81,7 @@ MODEL:
 
         ANCHOR_GENERATOR_CONFIG: [
             {
-                'class_name': 'class_0', # sailing_yatch
+                'class_name': 'sailing-yatch',
                 'anchor_sizes': [[10.5, 3.0, 13.0]],
                 'anchor_rotations': [0, 1.57],
                 'anchor_bottom_heights': [0.0],
@@ -91,7 +91,7 @@ MODEL:
                 'unmatched_threshold': 0.45
             },
             {
-                'class_name': 'class_1', # motor_boat
+                'class_name': 'motor-boat',
                 'anchor_sizes': [[7.5, 4.0, 3.3]],
                 'anchor_rotations': [0, 1.57],
                 'anchor_bottom_heights': [0.0],
@@ -101,7 +101,17 @@ MODEL:
                 'unmatched_threshold': 0.35
             },
             {
-                'class_name': 'class_4', # buoy
+                'class_name': 'vessel',
+                'anchor_sizes': [[35.0, 10.0, 10.0]],
+                'anchor_rotations': [0, 1.57],
+                'anchor_bottom_heights': [0.0],
+                'align_center': False,
+                'feature_map_stride': 2,
+                'matched_threshold': 0.5,
+                'unmatched_threshold': 0.35
+            },
+            {
+                'class_name': 'buoy',
                 'anchor_sizes': [[1.0, 1.0, 1.0]],
                 'anchor_rotations': [0, 1.57],
                 'anchor_bottom_heights': [0.0],

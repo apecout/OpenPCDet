@@ -475,10 +475,13 @@ if __name__ == '__main__':
         from pathlib import Path
         from easydict import EasyDict
         dataset_cfg = EasyDict(yaml.safe_load(open(sys.argv[2])))
-        ROOT_DIR = (Path(__file__).resolve().parent / '../../../').resolve()
+        ROOT_DIR = (Path(__file__).resolve().parent / '../../').resolve()
+        data_path = Path.joinpath(ROOT_DIR, dataset_cfg.DATA_PATH).resolve()
+        
         create_surcouf_infos(
             dataset_cfg=dataset_cfg,
-            class_names=['class_0', 'class_1', 'class_4'],
-            data_path=ROOT_DIR / 'data' / 'surcouf',
-            save_path=ROOT_DIR / 'data' / 'surcouf'
+            class_names=['sailing-yatch', 'motor-boat', 'vessel', 'buoy'],
+            data_path=data_path,
+            save_path=data_path
         )
+        

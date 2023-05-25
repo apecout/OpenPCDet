@@ -3,13 +3,6 @@ DATA_PATH: '../../data/surcouf'
 
 POINT_CLOUD_RANGE: [-40.0, -80.0, -2, 40.0, 0.0, 20]
 
-MAP_CLASS_TO_KITTI: {
-    'class_0': 'Car',
-    'class_1': 'Pedestrian',
-    'class_4': 'Cyclist',
-    'class_3': 'Van',
-}
-
 DATA_SPLIT: {
     'train': train,
     'test': val
@@ -36,10 +29,10 @@ DATA_AUGMENTOR:
           DB_INFO_PATH:
               - surcouf_dbinfos_train.pkl
           PREPARE: {
-             filter_by_min_points: ['class_0:5', 'class_1:5', 'class_4:5'],
+             filter_by_min_points: ['sailing-yatch:5', 'motor-boat:5', 'vessel:5', 'buoy:5'],
           }
 
-          SAMPLE_GROUPS: ['class_0:1', 'class_1:2', 'class_4:3']
+          SAMPLE_GROUPS: ['sailing-yatch:0', 'motor-boat:1', 'vessel:2', 'buoy:3']
           NUM_POINT_FEATURES: 4
           DATABASE_WITH_FAKELIDAR: False
           REMOVE_EXTRA_WIDTH: [0.0, 0.0, 0.0]
@@ -66,7 +59,7 @@ DATA_PROCESSOR:
 
     - NAME: transform_points_to_voxels
       VOXEL_SIZE: [0.1, 0.1, 0.15]
-      MAX_POINTS_PER_VOXEL: 5
+      MAX_POINTS_PER_VOXEL: 32
       MAX_NUMBER_OF_VOXELS: {
         'train': 150000,
         'test': 150000
